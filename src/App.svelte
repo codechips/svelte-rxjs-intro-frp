@@ -60,48 +60,24 @@
 </style>
 
 <script>
-  import {
-    refresh,
-    refreshOne,
-    refreshTwo,
-    refreshThree,
-    suggestionOne,
-    suggestionTwo,
-    suggestionThree
-  } from './users';
+  import { refresh, suggestions, replace } from './users';
 </script>
 
 <div class="container">
   <div>
     <button class="refresh" on:click={refresh}>refresh</button>
-    <ul>
-      {#if $suggestionOne}
-        <li>
-          <div class="user">
-            <img src={$suggestionOne.avatar_url} alt={$suggestionOne.login} />
-            <a href={$suggestionOne.html_url}>{$suggestionOne.login}</a>
-            <button on:click={() => refreshOne.next()}>x</button>
-          </div>
-        </li>
-      {/if}
-      {#if $suggestionTwo}
-        <li>
-          <div class="user">
-            <img src={$suggestionTwo.avatar_url} alt={$suggestionTwo.login} />
-            <a href={$suggestionTwo.html_url}>{$suggestionTwo.login}</a>
-            <button on:click={() => refreshTwo.next()}>x</button>
-          </div>
-        </li>
-      {/if}
-      {#if $suggestionThree}
-        <li>
-          <div class="user">
-            <img src={$suggestionThree.avatar_url} alt={$suggestionThree.login} />
-            <a href={$suggestionThree.html_url}>{$suggestionThree.login}</a>
-            <button on:click={() => refreshThree.next()}>x</button>
-          </div>
-        </li>
-      {/if}
-    </ul>
+    {#if $suggestions}
+      <ul>
+        {#each $suggestions as user}
+          <li>
+            <div class="user">
+              <img src={user.avatar_url} alt={user.login} />
+              <a href={user.html_url}>{user.login}</a>
+              <button on:click={() => replace(user.login)}>x</button>
+            </div>
+          </li>
+        {/each}
+      </ul>
+    {/if}
   </div>
 </div>

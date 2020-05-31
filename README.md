@@ -8,6 +8,10 @@ This is the code for the accompanying article at my blog:
 
 [Recreating a classic FRP tutorial with Svelte and RxJS](https://codechips.me/classic-frp-tutorial-with-svelte-rxjs-6/)
 
+## Final result
+
+!["Github dynamic list"](dynamic-five.png)
+
 ## Getting started
 
 ```text
